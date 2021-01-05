@@ -5,35 +5,58 @@ public class Gameboard {
 	private final char[] PLAYERS = {'R', 'Y'};
 	
 	// gameboard dimensions
-	private final int GBX = 7;
-	private final int GBY = 6;
-	public char[][] gameboard = new char[GBX][GBY];
+	private final int COL = 7;
+	private final int ROW = 6;
+	private char[][] gameboard = new char[COL][ROW];
 	
 	// "empty" char for empty spots on gameboard
 	private char empty = '.';
 	
+	// current player
+	// beginning player will always be red
+	private char currentPlayer = 'R';
 	
-	// set blank board 
-	public void blankBoardchar(char[][] gameboard) {
+
+	// getter for gameboard
+	public char[][] getGameboard() {
+		return gameboard;
+	}
+
+	// setter for gameboard
+	public void setGameboard(char[][] gameboard) {
+		this.gameboard = gameboard;
+	}
+
+	// getter for current player
+	public char getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	// setter for currentPlayer
+	public void setCurrentPlayer(char currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+
+	// generate blank board
+	public void blankGB() {
 		
 		// filling in all gameboard spots at beginning with '.'
-		for (int col = 0; col < GBX; col++) {
-			for (int row = 0; row < GBY; row++) {
+		for (int row = 0; row < ROW; row++) {
+			for (int col = 0; col < COL; col++) {
 				gameboard[col][row] = empty; 
+				System.out.print(gameboard[col][row]);
 			}
 			System.out.println();
 		}
-		
-		this.gameboard = gameboard;
-		
 	}
 	
 	
 	// generate new gameboard based on player's column choice
-	public void newGameboard(char[][] gameboard, int chosenCol, char player) {
+	public void fillGB (char[][] gameboard, int chosenCol, char player) {
 		
 		// generate new gameboard with new piece placed into given column
-		for (int row = 0; row < GBX; row++) {
+		for (int row = 0; row < COL; row++) {
 			if (gameboard[chosenCol][row] == empty)  {
 				gameboard[chosenCol][row] = player;
 				break;
@@ -46,10 +69,20 @@ public class Gameboard {
 	}
 	
 	
+	public void printGB(char[][] gameboard) {
+		for (int row = 0; row < ROW; row++) {
+			for (int col = 0; col < COL; col++) {
+				System.out.print(gameboard[col][row]);
+			}
+			System.out.println();
+		}
+	}
+	
+	
 	// prompt player to enter their desired column to place piece
 	public int playerMove(char player) {
 		// indicate turn
-		System.out.println("Player: " + player);
+		System.out.println("player " + player + " turn: ");
 		
 		// prompt player to enter desired column
 		Scanner playerInput = new Scanner(System.in);
@@ -66,7 +99,7 @@ public class Gameboard {
 	public boolean legalCol(char[][] gameboard, int chosenCol) {
 		
 		// if there is an empty spot in column, return true
-		for (int row = 0; row < GBY; row++) {
+		for (int row = 0; row < ROW; row++) {
 			if (gameboard[chosenCol][row] == empty) {
 				return true;
 			}
@@ -75,5 +108,7 @@ public class Gameboard {
 		// return false if there are no more empty spots in chosen column
 		return false;
 	}
+	
+	
 
 }
