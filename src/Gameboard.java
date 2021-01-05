@@ -30,7 +30,7 @@ public class Gameboard {
 	
 	
 	// generate new gameboard based on player's column choice
-	public void move(char[][] gameboard, int chosenCol, char player) {
+	public void newGameboard(char[][] gameboard, int chosenCol, char player) {
 		
 		// generate new gameboard with new piece placed into given column
 		for (int row = 0; row < GBX; row++) {
@@ -62,9 +62,18 @@ public class Gameboard {
 	}
 	
 	
-	// generate available columns that the user can place their piece into
-	public void legalCol(int col) {
+	// return boolean for legality of chosen column 
+	public boolean legalCol(char[][] gameboard, int chosenCol) {
 		
+		// if there is an empty spot in column, return true
+		for (int row = 0; row < GBY; row++) {
+			if (gameboard[chosenCol][row] == empty) {
+				return true;
+			}
+		}
+		
+		// return false if there are no more empty spots in chosen column
+		return false;
 	}
 
 }
