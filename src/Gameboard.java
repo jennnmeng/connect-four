@@ -64,22 +64,6 @@ public class Gameboard {
 	}
 	
 	
-	// prompt player to enter their desired column to place piece
-	public int playerMove(char player) {
-		// indicate turn
-		System.out.println("player " + player + " turn: ");
-		
-		// prompt player to enter desired column
-		Scanner playerInput = new Scanner(System.in);
-		int move;
-		System.out.println("where would you like to drop your piece?");
-		move = playerInput.nextInt();
-		
-		// return desired column
-		return move;
-	}
-	
-	
 	// return boolean for legality of chosen column 
 	public boolean legalCol(char[][] gameboard, int chosenCol) {
 		

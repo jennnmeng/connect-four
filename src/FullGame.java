@@ -13,22 +13,28 @@ public class FullGame {
 
 		// red will begin every game
 		player.setCurrentPlayer('R');
-		
-		// turns
-		
-		// 
+
+		// continuing alternating between players until gameover is reached
 		while (win.gameover(game.getGameboard(), player.getCurrentPlayer()) == true) {
+
 			System.out.println();
 
+			player.move(player.getCurrentPlayer());
+
+			// continue prompting player for column choice if choice is illegal
+			while (game.legalCol(game.getGameboard(), player.getMove()) == false) {
+				System.out.println("column chosen is invalid.");
+			}
+
 			// prompt user for move, and generate new gameboard with spot filled
-			game.fillGB(game.getGameboard(), game.playerMove(player.getCurrentPlayer()), player.getCurrentPlayer());
+			game.fillGB(game.getGameboard(), player.getMove(), player.getCurrentPlayer());
 
 			game.printGB(game.getGameboard());
 
-			// yellow's turn
+			// change players
 			player.changePlayers();
 		}
-		
+
 		player.changePlayers();
 
 		// output winning player
