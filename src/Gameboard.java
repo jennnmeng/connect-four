@@ -1,20 +1,15 @@
 import java.util.Scanner;
 
 public class Gameboard {
-	// two players: red and yellow
-	private final char[] PLAYERS = {'R', 'Y'};
 	
 	// gameboard dimensions
-	private final int COL = 7;
-	private final int ROW = 6;
+	public final int COL = 7;
+	public final int ROW = 6;
 	private char[][] gameboard = new char[COL][ROW];
 	
-	// "empty" char for empty spots on gameboard
-	private char empty = '.';
 	
-	// current player
-	// beginning player will always be red
-	private char currentPlayer = 'R';
+	// "empty" char for empty spots on gameboard
+	public final char EMPTY = '.';
 	
 
 	// getter for gameboard
@@ -27,24 +22,13 @@ public class Gameboard {
 		this.gameboard = gameboard;
 	}
 
-	// getter for current player
-	public char getCurrentPlayer() {
-		return currentPlayer;
-	}
-
-	// setter for currentPlayer
-	public void setCurrentPlayer(char currentPlayer) {
-		this.currentPlayer = currentPlayer;
-	}
-
-
-	// generate blank board
+	// generate blank board at start of every new game
 	public void blankGB() {
 		
 		// filling in all gameboard spots at beginning with '.'
 		for (int row = 0; row < ROW; row++) {
 			for (int col = 0; col < COL; col++) {
-				gameboard[col][row] = empty; 
+				gameboard[col][row] = EMPTY; 
 				System.out.print(gameboard[col][row]);
 			}
 			System.out.println();
@@ -56,10 +40,10 @@ public class Gameboard {
 	public void fillGB (char[][] gameboard, int chosenCol, char player) {
 		
 		// generate new gameboard with new piece placed into given column
-		for (int row = 0; row < COL; row++) {
-			if (gameboard[chosenCol][row] == empty)  {
+		for (int row = ROW - 1; row >= 0; row--) {
+			if (gameboard[chosenCol][row] == EMPTY)  {
 				gameboard[chosenCol][row] = player;
-				break;
+				return;
 			}
 		}
 		
@@ -68,8 +52,9 @@ public class Gameboard {
 		
 	}
 	
-	
+	// prints the new gameboard after a move has been made
 	public void printGB(char[][] gameboard) {
+		
 		for (int row = 0; row < ROW; row++) {
 			for (int col = 0; col < COL; col++) {
 				System.out.print(gameboard[col][row]);
@@ -99,8 +84,8 @@ public class Gameboard {
 	public boolean legalCol(char[][] gameboard, int chosenCol) {
 		
 		// if there is an empty spot in column, return true
-		for (int row = 0; row < ROW; row++) {
-			if (gameboard[chosenCol][row] == empty) {
+		for (int row = ROW - 1; row < 0; row--) {
+			if (gameboard[chosenCol][row] == EMPTY) {
 				return true;
 			}
 		}
