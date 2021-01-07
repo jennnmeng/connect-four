@@ -1,6 +1,7 @@
+
 import tests.detectwintests;
 
-public class DetectWin extends GameboardLogic {
+public class DetectWinLogic extends GameboardLogic {
 
 	// detect vertical win
 	public boolean vertical(char[][] gameboard, char player) {
@@ -53,11 +54,11 @@ public class DetectWin extends GameboardLogic {
 	// detect diagonal right leaning
 	public boolean diagonalRight(char[][] gameboard, char player) {
 
-		for (int row = ROW - 1; row >= 0; row--) {
-			for (int col = 0; col < COL; col++) {
-				if (gameboard[col][row] != EMPTY && gameboard[col][row] == gameboard[col + 1][row - 1]
-						&& gameboard[col + 1][row - 1] == gameboard[col + 2][row - 2]
-						&& gameboard[col + 2][row - 2] == gameboard[col + 3][row - 3])
+		for (int row = ROW - 1; row >= 3; row--) {
+			for (int col = COL - 1; col >= 3; col--) {
+				if (gameboard[col][row] != EMPTY && gameboard[col][row] == gameboard[col - 1][row - 1]
+						&& gameboard[col - 1][row - 1] == gameboard[col - 2][row - 2]
+						&& gameboard[col - 2][row - 2] == gameboard[col - 3][row - 3])
 					return true;
 			}
 		}

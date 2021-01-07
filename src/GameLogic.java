@@ -1,9 +1,10 @@
+
 import java.util.Scanner;
 
 public class GameLogic {
 	
 	GameboardLogic gameboard = new GameboardLogic();
-	DetectWin win = new DetectWin();
+	DetectWinLogic win = new DetectWinLogic();
 	Player player = new Player();
 	
 	Scanner userInput = new Scanner(System.in);
@@ -59,9 +60,9 @@ public class GameLogic {
 			replay = false;
 		}
 		
-		do {
-			Game();
-		} while (replay = true);
+		while (replay = true) Game();
+		
+		System.out.println("thanks for playing connect four!");
 	}
 	
 }
