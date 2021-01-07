@@ -1,5 +1,5 @@
+package logic;
 
-import tests.detectwintests;
 
 public class DetectWinLogic extends GameboardLogic {
 
