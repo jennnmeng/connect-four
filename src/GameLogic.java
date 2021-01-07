@@ -8,7 +8,6 @@ public class GameLogic {
 	Player player = new Player();
 	
 	Scanner userInput = new Scanner(System.in);
-	private boolean replay = true;
 	
 	public void Game() {
 
@@ -54,15 +53,12 @@ public class GameLogic {
 		System.out.println();
 		String playAgain = userInput.nextLine();
 		
-		if (playAgain == "y") {
-			replay = true;
+		if (playAgain.equals("y")) {
+			Game();
 		} else {
-			replay = false;
+			System.out.println("thanks for playing connect four!");
 		}
-		
-		while (replay = true) Game();
-		
-		System.out.println("thanks for playing connect four!");
+			
 	}
 	
 }
