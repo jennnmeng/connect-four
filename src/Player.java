@@ -8,6 +8,10 @@ public class Player {
 	private int move;
 	
 	
+	/* getters and setters for:
+	 * move
+	 * currentPlayer 
+	 * */
 	public int getMove() {
 		return move;
 	}
@@ -15,7 +19,6 @@ public class Player {
 	public void setMove(int move) {
 		this.move = move;
 	}
-
 	
 	public char getCurrentPlayer() {
 		return currentPlayer;
@@ -36,20 +39,15 @@ public class Player {
 	
 	// prompt player to enter their desired column to place piece
 	public void move(char player) {
+		
 		// indicate turn
 		System.out.println("player " + player + " turn: ");
 		
 		// prompt player to enter desired column
 		Scanner playerInput = new Scanner(System.in);
 		System.out.println("where would you like to drop your piece?");
-		move = playerInput.nextInt();
-		
-		playerInput.close();
+		this.move = playerInput.nextInt();
 		
 	}
 	
-	
-	
-
-
 }

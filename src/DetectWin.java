@@ -1,12 +1,14 @@
+import tests.detectwintests;
 
-public class DetectWin extends Gameboard {
+public class DetectWin extends GameboardLogic {
 
 	// detect vertical win
 	public boolean vertical(char[][] gameboard, char player) {
 
 		for (int col = 0; col < COL; col++) {
 			for (int row = ROW - 4; row >= 0; row--)
-				if (gameboard[col][row] == gameboard[col][row + 1] && gameboard[col][row + 1] == gameboard[col][row + 2]
+				if (gameboard[col][row] != EMPTY && gameboard[col][row] == gameboard[col][row + 1]
+						&& gameboard[col][row + 1] == gameboard[col][row + 2]
 						&& gameboard[col][row + 2] == gameboard[col][row + 3]) {
 					return true;
 
@@ -22,7 +24,8 @@ public class DetectWin extends Gameboard {
 
 		for (int row = ROW - 1; row >= 0; row--) {
 			for (int col = 0; col < COL - 3; col++) {
-				if (gameboard[col][row] == gameboard[col + 1][row] && gameboard[col + 1][row] == gameboard[col + 2][row]
+				if (gameboard[col][row] != EMPTY && gameboard[col][row] == gameboard[col + 1][row]
+						&& gameboard[col + 1][row] == gameboard[col + 2][row]
 						&& gameboard[col + 2][row] == gameboard[col + 3][row])
 					return true;
 			}
@@ -37,7 +40,7 @@ public class DetectWin extends Gameboard {
 
 		for (int row = ROW - 3; row >= 0; row--) {
 			for (int col = COL - 3; col >= 0; col--) {
-				if (gameboard[col][row] == gameboard[col + 1][row - 1]
+				if (gameboard[col][row] != EMPTY && gameboard[col][row] == gameboard[col + 1][row - 1]
 						&& gameboard[col + 1][row - 1] == gameboard[col + 2][row - 2]
 						&& gameboard[col + 2][row - 2] == gameboard[col + 3][row - 3])
 					return true;
@@ -52,7 +55,7 @@ public class DetectWin extends Gameboard {
 
 		for (int row = ROW - 1; row >= 0; row--) {
 			for (int col = 0; col < COL; col++) {
-				if (gameboard[col][row] == gameboard[col + 1][row - 1]
+				if (gameboard[col][row] != EMPTY && gameboard[col][row] == gameboard[col + 1][row - 1]
 						&& gameboard[col + 1][row - 1] == gameboard[col + 2][row - 2]
 						&& gameboard[col + 2][row - 2] == gameboard[col + 3][row - 3])
 					return true;

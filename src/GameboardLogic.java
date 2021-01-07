@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Gameboard {
+public class GameboardLogic {
 	
 	// gameboard dimensions
 	public final int COL = 7;
@@ -68,7 +68,7 @@ public class Gameboard {
 	public boolean legalCol(char[][] gameboard, int chosenCol) {
 		
 		// if there is an empty spot in column, return true
-		for (int row = ROW - 1; row < 0; row--) {
+		for (int row = ROW - 1; row >= 0; row--) {
 			if (gameboard[chosenCol][row] == EMPTY) {
 				return true;
 			}
